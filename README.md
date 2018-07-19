@@ -40,3 +40,17 @@ yarn                # setup everything related package depedencies and metadata.
 yarn test           # unit test - mock DB then no need for a test database required running
 yarn start          # run the server - you must have a test database running
 ```
+
+You can also run the test server in its own container:
+
+```bash
+cd ./users-service
+docker build -t users-service .
+docker run -it \
+          -p 8123:8123 \         # map the host port 8123 to the container port 8123
+          --link db:db \         # link to the container named *db* and refer to it as *db*
+          -e DATABASE_HOST=DB \  # set the *DATABASE_HOST* enviroment variable to *db*
+          users-service
+```
+
+Now when we go to `localhost:8123/users` everything works!
