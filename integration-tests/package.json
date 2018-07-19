@@ -1,0 +1,29 @@
+{
+  "name": "integration-service",
+  "version": "1.0.0",
+  "description": "Integration tests for our services",
+  "main": "index.js",
+  "scripts": {
+    "start": "mocha -t 5000 ./index.js",
+    "lint": "eslint ."
+  },
+  "author": "Minso, thongnx6@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^5.2.0",
+    "should": "^13.2.1",
+    "supertest": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.1.0"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "rules": {
+      "semi": 2
+    }
+  }
+}
