@@ -46,7 +46,7 @@ class Repository {
         }
 
         if(results.length === 0) {
-          resolved(undefined);
+          resolve(undefined);
         } else {
           resolve({
             email: results[0].email,

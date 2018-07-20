@@ -12,6 +12,7 @@ You must have Docker and NodeJS installed for this code to work! Check the list 
 ## Structure folder
 
 ```bash
+/integration-tests      # Integration testing
 /test-db                # Wrapping up the Test Database
 /users-service          # Root of our node.js microservice
   - package.json        # Init dependencies, metadata
@@ -24,9 +25,10 @@ You must have Docker and NodeJS installed for this code to work! Check the list 
 
 ## Development mode
 
-As wrapping up the Test Database, to start or stop the test database, just use the commands bellow:
+As wrapping up the Test Database, to start or stop the test database, just use the commands bellow :
 
 ```bash
+## Without Docker compose
 cd ./test-db
 ./start.sh          # to starts the test database
 ./stop.sh           # to stops the test database
@@ -44,6 +46,7 @@ yarn start          # run the server - you must have a test database running
 You can also run the test server in its own container:
 
 ```bash
+## Without Docker compose
 cd ./users-service
 docker build -t users-service .
 docker run -it \
@@ -54,3 +57,15 @@ docker run -it \
 ```
 
 Now when we go to `localhost:8123/users` everything works!
+
+## Integration testing
+
+To test the entire our stack, plese run command as bellow:
+
+```bash
+docker-compose build
+docker-compose up
+sleep 10
+cd integration-tests && npm start && cd ../
+docker-compose down
+```
